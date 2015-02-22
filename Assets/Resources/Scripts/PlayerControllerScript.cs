@@ -32,7 +32,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 {
                     hit.transform.GetComponent<Clickable>().OnClicked();
                 }
-                else if (hit.transform.tag == "Draggable")
+                else if (hit.transform.GetComponent<InventoryItem>())
                 {
                     currentlyDraggedObject = hit.transform;
                 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnableClickablecripts : MonoBehaviour {
+public class EnableClickableScripts : MonoBehaviour {
 
     public bool enableOnStart;
     private Clickable[] items;

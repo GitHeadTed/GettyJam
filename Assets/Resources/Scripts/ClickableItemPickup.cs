@@ -6,7 +6,7 @@ public class ClickableItemPickup : Clickable {
 	// Use this for initialization
 
     public GameObject itemPrefab;
-    public PlayerControllerScript playerScript;
+    private PlayerControllerScript playerScript;
 
 	// Update is called once per frame
 	void Update () {
@@ -17,6 +17,8 @@ public class ClickableItemPickup : Clickable {
 	{
 	    GameObject temp = (GameObject)Instantiate (itemPrefab, transform.position, Quaternion.identity);
         playerScript.addInventoryItem(temp.GetComponent<InventoryItem>());
+        temp.transform.parent = Camera.main.transform;
+        Destroy(gameObject);
 	}
 }
 
