@@ -7,6 +7,12 @@ public class PaintingScript : MonoBehaviour {
 	public GameObject nextPainting;
 	public GameObject newItem;
 	public GameObject textToAdvance;
+    private GameObject successSound;
+
+    void Start()
+    {
+        successSound = Resources.Load<GameObject>("Prefabs/SuccessSound");
+    }
 	
     /*
     void OnTriggerEnter(Collider other){
@@ -21,11 +27,11 @@ public class PaintingScript : MonoBehaviour {
 		}
 	}*/
 
-    public void OnSolved(GameObject itemToDelete)
+    public void OnSolved()
     {
 		if (textToAdvance != null)
 			textToAdvance.GetComponent<TextBubble>().advance ();
-        Destroy(gameObject);
-
+        //Destroy(gameObject);
+        Instantiate(successSound, transform.position, Quaternion.identity);
     }
 }
