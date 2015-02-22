@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="caprisun" size="1.000000 1.000000" />
+    <ImageTarget name="grapegirl" size="1.000000 1.155080" />
+    <ImageTarget name="waterwheel" size="1.000000 0.794702" />
+    <ImageTarget name="testimage" size="5.000000 6.734694" />
+    <ImageTarget name="musicians" size="5.000000 7.190413" />
+    <ImageTarget name="woodland" size="5.000000 3.690000" />
+  </Tracking>
+</QCARConfig>
