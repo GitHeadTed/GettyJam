@@ -65,22 +65,6 @@ public class FadeInTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
         {
             StartCoroutine(ScaleDown(transforms[k], origScales[k]));
         }
-
-        Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
-        Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
-
-        // Disable rendering:
-        foreach (Renderer component in rendererComponents)
-        {
-            component.enabled = false;
-        }
-
-        // Disable colliders:
-        foreach (Collider component in colliderComponents)
-        {
-            component.enabled = false;
-        }
-        Debug.Log("test");
     }
 
     IEnumerator ScaleUp(Transform trans,Vector3 scale)
