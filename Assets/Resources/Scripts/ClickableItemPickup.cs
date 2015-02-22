@@ -13,7 +13,7 @@ public class ClickableItemPickup : Clickable {
 	void Update () {
         playerScript = GameObject.FindObjectOfType<PlayerControllerScript>();
         tooltip = GameObject.Find("Indicator").gameObject;
-        tooltip.renderer.enabled = false;
+        //tooltip.GetComponent<SpriteRenderer>().enabled = false;
     }
 	
 	public override void OnClicked()
@@ -27,10 +27,30 @@ public class ClickableItemPickup : Clickable {
         //Destroy(gameObject);
 	}
 
+    public void startFadeInChild()
+    {
+        StartCoroutine(fadeInChild());
+    }
+
+    IEnumerator fadeInChild()
+    {
+        
+        SpriteRenderer mat = tooltip.GetComponent<SpriteRenderer>();
+        float timer = 0;
+        Color startCol = mat.color;
+        while (timer < .5f)
+        {
+            timer += Time.deltaTime;
+            mat.color = new Color(startCol.r, startCol.g, startCol.b, Mathf.Lerp(0,1, timer / .5f));
+            yield return new WaitForEndOfFrame();
+        }
+        Destroy(gameObject);
+    }
+
     IEnumerator fadeOutChild()
     {
         collider.enabled = false;
-        Material mat = tooltip.renderer.material;
+        SpriteRenderer mat = tooltip.GetComponent<SpriteRenderer>();
         float timer = 0;
         Color startCol = mat.color;
         while (timer < .5f)

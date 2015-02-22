@@ -37,8 +37,12 @@ public class TextBubble : Clickable {
 			tm.text = dialogue[current];
             if (objectEnable[current])
             {
-                objectEnable[current].renderer.enabled = true;
-                fadeIn(objectEnable[current]);
+                //objectEnable[current].SetActive(true);
+                objectEnable[current].GetComponent<SpriteRenderer>().enabled = true;
+                if (objectEnable[current].GetComponent<FadeInPictureTooltip>())
+                {
+                    objectEnable[current].GetComponent<FadeInPictureTooltip>().startFadeIn();
+                }
             }
 		}
 
