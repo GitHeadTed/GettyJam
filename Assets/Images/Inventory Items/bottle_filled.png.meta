@@ -1,19 +1,11 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 9580b467c1b2de84ab7fb62070f3e662
-=======
-guid: cfd5cd5779c0ac74187c811bc6b88515
->>>>>>> eb10e891c9cf90df8d1fec16d23f2ca5b3d92b88
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-<<<<<<< HEAD
     enableMipMap: 1
-=======
-    enableMipMap: 0
->>>>>>> eb10e891c9cf90df8d1fec16d23f2ca5b3d92b88
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -33,11 +25,7 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-<<<<<<< HEAD
     aniso: 16
-=======
-    aniso: 1
->>>>>>> eb10e891c9cf90df8d1fec16d23f2ca5b3d92b88
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
