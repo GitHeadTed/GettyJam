@@ -28,7 +28,7 @@ public class PlayerControllerScript : MonoBehaviour {
             RaycastHit hit = new RaycastHit();
             if (Physics.Raycast(mouseRay, out hit))
             {
-                if (hit.transform.tag == "Clickable")
+                if (hit.transform.GetComponent<Clickable>())
                 {
                     hit.transform.GetComponent<Clickable>().OnClicked();
                 }
@@ -45,8 +45,31 @@ public class PlayerControllerScript : MonoBehaviour {
 		else if (Input.GetTouch (0).phase == TouchPhase.Moved) {
             if (currentlyDraggedObject)
             {
-                Vector3 touchPos = Input.GetTouch(0).position;
-                currentlyDraggedObject.position = camera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, currentlyDraggedObject.position.z));
+                Touch touch = Input.GetTouch(0);
+                Transform pickedObject = currentlyDraggedObject;
+                Vector2 screenDelta = touch.deltaPosition;
+                screenDelta *= 2;
+
+                float halfScreenWidth = 0.5f * Screen.width;
+                float halfScreenHeight = 0.5f * Screen.height;
+
+                float dx = screenDelta.x / halfScreenWidth;
+                float dy = screenDelta.y / halfScreenHeight;
+
+                Vector3 objectToCamera =
+                    pickedObject.transform.position - Camera.main.transform.position;
+                float distance = objectToCamera.magnitude;
+
+                float fovRad = Camera.main.fieldOfView * Mathf.Deg2Rad;
+                float motionScale = distance * Mathf.Tan(fovRad / 2);
+
+                Vector3 translationInCameraRef =
+                    new Vector3(motionScale * dx, motionScale * dy, 0);
+
+                Vector3 translationInWorldRef =
+                    Camera.main.transform.TransformDirection(translationInCameraRef);
+
+                pickedObject.position += translationInWorldRef;
             }
 		}
         else if (Input.GetTouch(0).phase == TouchPhase.Ended)

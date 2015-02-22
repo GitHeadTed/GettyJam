@@ -6,11 +6,11 @@ public class InventoryItem : MonoBehaviour {
     public int inventorySlot = 0;
     public float movementSpeed = 3;
     public string name;
-    private Vector3 inventoryPos;
+    private Transform inventoryPos;
 
 	// Use this for initialization
 	void Start () {
-        inventoryPos = GameObject.Find("Inventory" + inventorySlot).transform.position;
+        inventoryPos = GameObject.Find("Inventory" + inventorySlot).transform;
         StartCoroutine(lerpToInventorySlot());
 	}
 	
@@ -27,12 +27,12 @@ public class InventoryItem : MonoBehaviour {
     IEnumerator lerpToInventorySlot()
     {
         float timer = 0;
-        float distanceToDest = Vector3.Distance(transform.position,inventoryPos);
+        float distanceToDest = Vector3.Distance(transform.position,inventoryPos.position);
         float movementDuration = distanceToDest / movementSpeed;
         while (timer < movementDuration)
         {
             timer += Time.deltaTime;
-            transform.position = Vector3.Lerp(transform.position, inventoryPos, timer / movementDuration);
+            transform.position = Vector3.Lerp(transform.position, inventoryPos.position, timer / movementDuration);
             yield return new WaitForEndOfFrame();
         }
     }
