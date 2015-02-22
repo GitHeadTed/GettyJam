@@ -22,13 +22,8 @@ public class TextBubble : Clickable {
 	
 	public override void OnClicked()
 	{
-		
-		bool unlocked = true;
-		if(current + 1 < textUnlocked.Length){
-			unlocked = textUnlocked[current + 1];
-		}
-		
-		if(current+1 < dialogue.Length){
+
+		if(current+1 < dialogue.Length && textUnlocked[current + 1]){
 			current++;
 			tm.text = dialogue[current];
 
@@ -37,11 +32,13 @@ public class TextBubble : Clickable {
 	}
 	
 	public void next(){
-		if(current+1 < dialogue.Length){
+		while(textUnlocked[current] && current+1 < dialogue.Length){
 			current++;
 			tm.text = dialogue[current];
 			
 		}
 		
 	}
+
+
 }
