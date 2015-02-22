@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnableClickableScripts : MonoBehaviour {
 
-    public bool enableOnStart;
+    public bool enableOnStart = true;
     private Clickable[] items;
 
 	// Use this for initialization

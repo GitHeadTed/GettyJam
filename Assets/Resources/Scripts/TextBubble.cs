@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TextBubble : MonoBehaviour {
+public class TextBubble : Clickable {
 
 	public string [] dialogue = { "First dialogue.", "Second dialogue" };
 	public bool [] textUnlocked = {true, true};
@@ -12,6 +12,8 @@ public class TextBubble : MonoBehaviour {
 	void Start () {
 		tm = GetComponent<TextMesh>();
 		current = 0;
+		tm.text = dialogue[current];
+		
 		
 		
 	}
@@ -21,12 +23,9 @@ public class TextBubble : MonoBehaviour {
 	
 	}
 	
-	public virtual void OnClicked()
+	public override void OnClicked()
 	{
-		next();
-	}
-	
-	public void next(){
+		
 		bool unlocked = true;
 		if(current + 1 < textUnlocked.Length){
 			unlocked = textUnlocked[current + 1];
@@ -35,7 +34,18 @@ public class TextBubble : MonoBehaviour {
 		if(current+1 < dialogue.Length && unlocked){
 			current++;
 			tm.text = dialogue[current];
-		                                      
+			Debug.Log("1");
+			
+			
 		}
+	}
+	
+	public void next(){
+		if(current+1 < dialogue.Length){
+			current++;
+			tm.text = dialogue[current];
+			
+		}
+		
 	}
 }
