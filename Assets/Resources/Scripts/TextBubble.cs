@@ -13,9 +13,6 @@ public class TextBubble : Clickable {
 		tm = GetComponent<TextMesh>();
 		current = 0;
 		tm.text = dialogue[current];
-		
-		
-		
 	}
 	
 	// Update is called once per frame
@@ -31,11 +28,10 @@ public class TextBubble : Clickable {
 			unlocked = textUnlocked[current + 1];
 		}
 		
-		if(current+1 < dialogue.Length && unlocked){
+		if(current+1 < dialogue.Length){
 			current++;
 			tm.text = dialogue[current];
-			Debug.Log("1");
-			
+
 			
 		}
 	}
