@@ -53,7 +53,13 @@ public class PlayerControllerScript : MonoBehaviour {
             if (currentlyDraggedObject)
             {
                 currentlyDraggedObject.GetComponent<InventoryItem>().returnToInventory();
+                currentlyDraggedObject = null;
             }
         }
 	}
+
+    public void addInventoryItem(InventoryItem item)
+    {
+
+    }
 }
