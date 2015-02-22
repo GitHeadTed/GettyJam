@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class PlayerControllerScript : MonoBehaviour {
 
     Camera camera;
-    
+    private Transform currentlyDraggedObject;
 	public List<InventoryItem> playerInventory;
 	// Use this for initialization
 	void Start () {
@@ -21,6 +21,7 @@ public class PlayerControllerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Ray mouseRay = camera.ScreenPointToRay(Input.GetTouch(0).position);
@@ -33,12 +34,26 @@ public class PlayerControllerScript : MonoBehaviour {
                 }
                 else if (hit.transform.tag == "Draggable")
                 {
-                    
+                    currentlyDraggedObject = hit.transform;
                 }
             }
+            else
+            {
+                currentlyDraggedObject = null;
+            }
         }
-		if (Input.GetTouch (0).phase == TouchPhase.Moved) {
-
+		else if (Input.GetTouch (0).phase == TouchPhase.Moved) {
+            if (currentlyDraggedObject)
+            {
+                currentlyDraggedObject.position = camera.ScreenToWorldPoint(Input.GetTouch(0).position);
+            }
 		}
+        else if (Input.GetTouch(0).phase == TouchPhase.Ended)
+        {
+            if (currentlyDraggedObject)
+            {
+                currentlyDraggedObject.GetComponent<InventoryItem>().returnToInventory();
+            }
+        }
 	}
 }
