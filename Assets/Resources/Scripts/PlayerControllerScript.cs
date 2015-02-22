@@ -80,6 +80,7 @@ public class PlayerControllerScript : MonoBehaviour {
             {
                 currentlyDraggedObject.GetComponent<InventoryItem>().returnToInventory();
                 RaycastHit hit = new RaycastHit();
+                
                 if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.GetTouch(0).position), out hit))
                 {
                     if (hit.transform.GetComponent<PaintingScript>().ItemName == currentlyDraggedObject.GetComponent<InventoryItem>().name)
