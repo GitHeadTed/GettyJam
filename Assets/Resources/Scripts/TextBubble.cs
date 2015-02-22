@@ -11,9 +11,11 @@ public class TextBubble : Clickable {
 
 	// Use this for initialization
 	void Start () {
+		for(int i = 0; i < dialogue.Length; i++) dialogue[i] = dialogue[i].Replace("NEWLINE","\n");
 		tm = GetComponent<TextMesh>();
 		current = 0;
 		tm.text = dialogue[current];
+
 	}
 	
 	// Update is called once per frame
