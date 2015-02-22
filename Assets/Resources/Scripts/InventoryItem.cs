@@ -35,5 +35,6 @@ public class InventoryItem : MonoBehaviour {
             transform.position = Vector3.Lerp(transform.position, inventoryPos.position, timer / movementDuration);
             yield return new WaitForEndOfFrame();
         }
+        collider.enabled = true;
     }
 }

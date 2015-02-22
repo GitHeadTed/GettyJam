@@ -78,13 +78,15 @@ public class PlayerControllerScript : MonoBehaviour {
         {
             if (currentlyDraggedObject)
             {
-                currentlyDraggedObject.collider.enabled = true;
                 currentlyDraggedObject.GetComponent<InventoryItem>().returnToInventory();
                 RaycastHit hit = new RaycastHit();
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(currentlyDraggedObject.transform.position), out hit))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.GetTouch(0).position), out hit))
                 {
-                    if(hit.transform.GetComponent<PaintingScript>().ItemName == currentlyDraggedObject.GetComponent<InventoryItem>().name)
+                    if (hit.transform.GetComponent<PaintingScript>().ItemName == currentlyDraggedObject.GetComponent<InventoryItem>().name)
+                    {
                         hit.transform.GetComponent<PaintingScript>().OnSolved();
+                        Destroy(currentlyDraggedObject);
+                    }
                 }
                 currentlyDraggedObject = null;
             }
