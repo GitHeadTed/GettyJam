@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FadeInTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
+public class ScaleUpTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
 {
 
-    public float fadeInTime = 1;
-    public float fadeOutTime= 1;
+    public float scaleInTime = 1;
+    public float scaleOutTime = 1;
     private Transform[] transforms;
+    private Vector3[] origScales;
     private TrackableBehaviour mTrackableBehaviour;
 
-    // Use this for initialization
+	// Use this for initialization
     void Awake()
     {
         transforms = GetComponentsInChildren<Transform>();
+        origScales = new Vector3[transforms.Length];
+        for (int k = 0; k < transforms.Length; k++)
+        {
+            origScales[k] = transforms[k].localScale;
+        }
     }
 
     void Start()
@@ -23,12 +29,11 @@ public class FadeInTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
             mTrackableBehaviour.RegisterTrackableEventHandler(this);
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+	
+	// Update is called once per frame
+	void Update () {
+	
+	}
 
     public void OnTrackableStateChanged(
                                     TrackableBehaviour.Status previousStatus,
@@ -50,17 +55,7 @@ public class FadeInTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
     {
         for (int k = 0; k < transforms.Length; k++)
         {
-            if (transforms[k].GetComponent<Item>())
-            {
-                if (transforms[k].GetComponent<Item>().enabled)
-                {
-                    FadeIn(transforms[k]);
-                }
-            }
-            else
-            {
-                FadeIn(transforms[k]);
-            }
+            StartCoroutine(ScaleUp(transforms[k], origScales[k]));
         }
     }
 
@@ -68,49 +63,33 @@ public class FadeInTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
     {
         for (int k = 0; k < transforms.Length; k++)
         {
-            if (transforms[k].GetComponent<Item>())
-            {
-                if (transforms[k].GetComponent<Item>().enabled)
-                {
-                    FadeOut(transforms[k]);
-                }
-            }
-            else
-            {
-                FadeOut(transforms[k]);
-            }
+            StartCoroutine(ScaleDown(transforms[k], origScales[k]));
         }
     }
 
-    IEnumerator FadeIn(Transform trans)
+    IEnumerator ScaleUp(Transform trans,Vector3 scale)
     {
-       
-        Renderer renderer =  trans.renderer;
-        renderer.enabled = true;
         trans.collider.enabled = true;
+        trans.renderer.enabled = true;
         float timer = 0;
-        Color startCol = renderer.material.GetColor(0);
-        while (timer < fadeInTime)
+        while (timer < scaleInTime)
         {
             timer += Time.deltaTime;
-            renderer.material.SetColor(0,new Color(startCol.r,startCol.g,startCol.b,Mathf.Lerp(0,1,timer/fadeInTime)));
+            trans.transform.localScale = Vector3.Lerp(Vector3.zero , scale, timer / scaleInTime);
             yield return new WaitForEndOfFrame();
         }
     }
 
-    IEnumerator FadeOut(Transform trans)
+    IEnumerator ScaleDown(Transform trans, Vector3 scale)
     {
-        Renderer renderer =  trans.renderer;
         float timer = 0;
-        Color startCol = renderer.material.GetColor(0);
-        while (timer < fadeInTime)
+        while (timer < scaleInTime)
         {
             timer += Time.deltaTime;
-            renderer.material.SetColor(0,new Color(startCol.r,startCol.g,startCol.b,Mathf.Lerp(1,0,timer/fadeOutTime)));
+            trans.transform.localScale = Vector3.Lerp(scale, Vector3.zero, timer / scaleInTime);
             yield return new WaitForEndOfFrame();
         }
-        renderer.enabled = false;
         trans.collider.enabled = false;
+        trans.renderer.enabled = false;
     }
-    
 }
