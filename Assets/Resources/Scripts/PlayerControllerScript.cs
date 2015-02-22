@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerControllerScript : MonoBehaviour {
 
     Camera camera;
-
+	public List<Item> playerInventory;
 	// Use this for initialization
 	void Start () {
         camera = Camera.main;
+<<<<<<< Updated upstream
 		bool focusModeSet;
 		focusModeSet = CameraDevice.Instance.SetFocusMode(  
 		                                                  CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
@@ -15,6 +17,9 @@ public class PlayerControllerScript : MonoBehaviour {
 		if (!focusModeSet) {
 			Debug.Log("Failed to set focus mode (unsupported mode).");
 		}
+=======
+		playerInventory = new List<Item> ();
+>>>>>>> Stashed changes
 	}
 	
 	// Update is called once per frame

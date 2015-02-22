@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Item : MonoBehaviour {
 	public string name;
+	public int inventoryPos;
+	protected bool inPainting = true;
 	// Use this for initialization
 	void Awake () {
         enabled = false;
