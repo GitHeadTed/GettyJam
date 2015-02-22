@@ -12,7 +12,7 @@ public class ClickableItemPickup : Clickable {
 	// Update is called once per frame
 	void Update () {
         playerScript = GameObject.FindObjectOfType<PlayerControllerScript>();
-        tooltip = transform.FindChild("Tooltip").gameObject;
+        tooltip = transform.FindChild("TooltipPicture").gameObject;
     }
 	
 	public override void OnClicked()
