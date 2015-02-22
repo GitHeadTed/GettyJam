@@ -84,7 +84,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 {
                     if (hit.transform.GetComponent<PaintingScript>().ItemName == currentlyDraggedObject.GetComponent<InventoryItem>().name)
                     {
-                        hit.transform.GetComponent<PaintingScript>().OnSolved();
+                        hit.transform.GetComponent<PaintingScript>().OnSolved(currentlyDraggedObject);
                         Destroy(currentlyDraggedObject);
                     }
                 }
