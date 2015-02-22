@@ -21,11 +21,10 @@ public class PaintingScript : MonoBehaviour {
 		}
 	}*/
 
-    public void OnSolved(GameObject itemToDelete)
-    {
+    public void OnSolved( ){
 		if (textToAdvance != null)
 			textToAdvance.GetComponent<TextBubble>().advance ();
-        Destroy(gameObject);
+		//Play victory sound
 
     }
 }
