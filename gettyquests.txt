@@ -1,0 +1,172 @@
+[First Quest]
+
+Musicians -
+
+Hey you! Look up!
+
+Hello there! You seem a little lost.
+
+Well here's something you can do. I "borrowed" this lute from some people.
+
+Can you give it back to them?
+
+*gives you lute*
+
+Those two girls next to the fallen gentlemen know where they are! Talk to them!
+
+Good luck on your journey!
+
+
+Lot's daughters -
+
+Ahhhh! Look over there!
+
+Those two men are fighting with their instruments! Please stop them!
+
+
+Fighting musicians - 
+
+#1: For the last time, where is my lute?
+
+#2: I told you, I never saw it!
+
+#1: That's it! You're going to get it!
+
+
+Creepy dude - 
+
+Ha ha! Looks like it's going down!
+
+
+(give lute)
+
+#1: Oh, there it is...
+#2: See! I had nothing to do with it!
+#1: ... My apologies. And a thank you to you, kind stranger.
+
+[First Quest Over]
+
+Creepy dude - 
+
+Hey, you're pretty good at this.
+
+There is a man distracted by a fair maiden in this room. You should see what is going on over there.
+
+[Second Quest]
+
+Guinea Pigs - 
+
+Hello! How are you doing today!
+
+There's a big problem here! We need to get to Noah's Ark!
+
+Can you help us get there?
+
+
+--Noah's Ark Painting-- 
+
+Guinea Pigs - 
+
+We belong in this scene! Can you find where we must go?
+
+(put guinea pigs in place)
+
+[Second Quest Over]
+
+There we go! Thank you stranger!
+
+There's some soldiers relaxing in the next room. They need to be somewhere. Help them out!
+
+
+--Soldiers Room Painting--
+
+[Third Quest]
+
+Soldiers: Oh no! We're late! We need to be on our ship!
+
+You seem competent. Lead us to the ship with soldiers on it!
+
+--Ship Painting--
+
+[Third Quest Over]
+
+Soldiers: Thank you!
+
+We have another mission for you. There is a woman feeding her child. Find her and give her whatever she wants.
+
+--Butter Painting--
+
+[Fourth Quest]
+
+Butter woman: Help me! I need milk for my butter to feed my child!
+
+--Cow Painting--
+
+Cow girl: You need milk? Sure I can give you milk!
+
+(get milk)
+
+Cow girl: Take care!
+
+--Butter Painting--
+
+(give milk)
+
+[Fourth Quest Over]
+
+Butter woman: Thank you!
+
+Your final quest lies ahead! Find the angel about to leave!
+
+--Angel Leaving Painting--
+
+[Fifth Quest]
+
+Angel: I must leave! I must help a man in trouble!
+
+Find the place that I must go!
+
+(get angel)
+
+--Angel Feeding Painting--
+
+(put angel)
+
+Angel: Oh no! I forgot to bring food and water! 
+
+Can you get some for me? Here, take this canteen and fill it up!
+
+--Feast Painting--
+
+if (haveWater == false){
+
+Man: Ho ho! We have some peaches you can take, but no water! It's all on the floor now!
+
+} else {
+
+Man: Ho ho! Sure, take some peaches!
+
+}
+
+--Water Painting--
+
+(use canteen)
+
+You fill the canteen with water
+
+(get filled canteen)
+
+--Angel Feeding Painting--
+
+(give canteen)
+(give peaches)
+
+[Fifth Quest Over]
+
+Angel: Thank you hero! Your quest is now complete.
+Your good deeds will not go unnoticed in the Getty or the art world!
+
+Game: You win!
+
+[Game Over]
+
