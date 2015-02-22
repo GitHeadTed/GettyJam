@@ -35,6 +35,8 @@ public class PlayerControllerScript : MonoBehaviour {
                 else if (hit.transform.GetComponent<InventoryItem>() )
                 {
                     currentlyDraggedObject = hit.transform;
+                    currentlyDraggedObject.collider.enabled = false;
+
                 }
             }
             else
@@ -76,7 +78,14 @@ public class PlayerControllerScript : MonoBehaviour {
         {
             if (currentlyDraggedObject)
             {
+                currentlyDraggedObject.collider.enabled = true;
                 currentlyDraggedObject.GetComponent<InventoryItem>().returnToInventory();
+                RaycastHit hit = new RaycastHit();
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(currentlyDraggedObject.transform.position), out hit))
+                {
+                    if(hit.transform.GetComponent<PaintingScript>().ItemName == currentlyDraggedObject.GetComponent<InventoryItem>().name)
+                        hit.transform.GetComponent<PaintingScript>().OnSolved();
+                }
                 currentlyDraggedObject = null;
             }
         }

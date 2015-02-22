@@ -17,4 +17,9 @@ public class PaintingScript : MonoBehaviour {
 			}
 		}
 	}
+
+    public void OnSolved()
+    {
+        Destroy(gameObject);
+    }
 }
