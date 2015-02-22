@@ -15,7 +15,10 @@ public class Lute : Item {
 		if (this.inPainting) {
 			inPainting = false;
 			if (inventoryPos == 0) {
-				Instantiate (Resources.Load ("Prefabs/TestCube"), transform.position, Quaternion.identity);
+				Instantiate (Resources.Load ("Prefabs/Lute"), transform.position, Quaternion.identity);
+			}
+			else{
+				Instantiate (Resources.Load ("Prefabs/Lute"), transform.position, Quaternion.identity);
 			}
 		}
 	}

@@ -9,16 +9,13 @@ public class PlayerControllerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         camera = Camera.main;
-<<<<<<< Updated upstream
 		bool focusModeSet;
 		focusModeSet = CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
 		
 		if (!focusModeSet) {
 			Debug.Log("Failed to set focus mode (unsupported mode).");
 		}
-=======
 		playerInventory = new List<Item> ();
->>>>>>> Stashed changes
 	}
 	
 	// Update is called once per frame
@@ -39,5 +36,8 @@ public class PlayerControllerScript : MonoBehaviour {
                 }
             }
         }
+		if (Input.GetTouch (0).phase == TouchPhase.Moved) {
+
+		}
 	}
 }
