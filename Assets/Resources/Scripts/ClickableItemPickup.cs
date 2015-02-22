@@ -28,13 +28,13 @@ public class ClickableItemPickup : Clickable {
 
     IEnumerator fadeOutChild()
     {
-        TextMesh text = tooltip.GetComponent<TextMesh>();
+        Material mat = tooltip.renderer.material;
         float timer = 0;
-        Color startCol = text.color;
+        Color startCol = mat.color;
         while (timer < .5f)
         {
             timer += Time.deltaTime;
-            text.color = new Color(startCol.r, startCol.g, startCol.b, Mathf.Lerp(startCol.a, 0, timer / .5f));
+            mat.color = new Color(startCol.r, startCol.g, startCol.b, Mathf.Lerp(startCol.a, 0, timer / .5f));
             yield return new WaitForEndOfFrame();
         }
         Destroy(gameObject);
