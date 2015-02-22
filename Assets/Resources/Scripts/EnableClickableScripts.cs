@@ -1,17 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnableItemScripts : MonoBehaviour {
+public class EnableClickablecripts : MonoBehaviour {
 
     public bool enableOnStart;
-    private Item[] items;
+    private Clickable[] items;
 
 	// Use this for initialization
 	void Start () {
-        items = GetComponentsInChildren<Item>();
+        items = GetComponentsInChildren<Clickable>();
         if (enableOnStart)
         {
-            foreach(Item i in items){
+            foreach (Clickable i in items)
+            {
                 i.enabled = true;
             }
         }
@@ -24,7 +25,7 @@ public class EnableItemScripts : MonoBehaviour {
 
     public void enableChildrenItemScripts()
     {
-        foreach (Item i in items)
+        foreach (Clickable i in items)
         {
             i.enabled = true;
         }

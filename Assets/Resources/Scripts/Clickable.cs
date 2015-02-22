@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Item : MonoBehaviour {
+public class Clickable : MonoBehaviour {
 	public string name;
 	public int inventoryPos;
 	protected bool inPainting = true;

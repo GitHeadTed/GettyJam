@@ -50,9 +50,9 @@ public class FadeInTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
     {
         for (int k = 0; k < transforms.Length; k++)
         {
-            if (transforms[k].GetComponent<Item>())
+            if (transforms[k].GetComponent<Clickable>())
             {
-                if (transforms[k].GetComponent<Item>().enabled)
+                if (transforms[k].GetComponent<Clickable>().enabled)
                 {
                     FadeIn(transforms[k]);
                 }
@@ -68,9 +68,9 @@ public class FadeInTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
     {
         for (int k = 0; k < transforms.Length; k++)
         {
-            if (transforms[k].GetComponent<Item>())
+            if (transforms[k].GetComponent<Clickable>())
             {
-                if (transforms[k].GetComponent<Item>().enabled)
+                if (transforms[k].GetComponent<Clickable>().enabled)
                 {
                     FadeOut(transforms[k]);
                 }

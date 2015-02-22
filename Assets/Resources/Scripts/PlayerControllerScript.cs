@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class PlayerControllerScript : MonoBehaviour {
 
     Camera camera;
-	public List<Item> playerInventory;
+    
+	public List<InventoryItem> playerInventory;
 	// Use this for initialization
 	void Start () {
         camera = Camera.main;
@@ -15,7 +16,7 @@ public class PlayerControllerScript : MonoBehaviour {
 		if (!focusModeSet) {
 			Debug.Log("Failed to set focus mode (unsupported mode).");
 		}
-		playerInventory = new List<Item> ();
+        playerInventory = new List<InventoryItem>();
 	}
 	
 	// Update is called once per frame
@@ -28,11 +29,11 @@ public class PlayerControllerScript : MonoBehaviour {
             {
                 if (hit.transform.tag == "Clickable")
                 {
-                    Item item = hit.transform.GetComponent<Item>();
-                    if (item)
-                    {
-                        item.OnClicked();
-                    }
+                    hit.transform.GetComponent<Clickable>().OnClicked();
+                }
+                else if (hit.transform.tag == "Draggable")
+                {
+                    
                 }
             }
         }
