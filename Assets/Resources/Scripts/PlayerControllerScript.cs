@@ -86,7 +86,8 @@ public class PlayerControllerScript : MonoBehaviour {
                     if (hit.transform.GetComponent<PaintingScript>().ItemName == currentlyDraggedObject.GetComponent<InventoryItem>().name)
                     {
                         hit.transform.GetComponent<PaintingScript>().OnSolved();
-                        Destroy(currentlyDraggedObject.gameObject);
+                        StartCoroutine(fadeOut(currentlyDraggedObject.gameObject));
+                        //Destroy(currentlyDraggedObject.gameObject);
                     }
                 }
                 currentlyDraggedObject = null;
@@ -97,5 +98,20 @@ public class PlayerControllerScript : MonoBehaviour {
     public void addInventoryItem(InventoryItem item)
     {
 
+    }
+
+    IEnumerator fadeOut(GameObject obj)
+    {
+        collider.enabled = false;
+        currentlyDraggedObject = null;
+        Material mat = obj.renderer.material;
+        float timer = 0;
+        Color startCol = mat.color;
+        while (timer < .5f)
+        {
+            timer += Time.deltaTime;
+            mat.color = new Color(startCol.r, startCol.g, startCol.b, Mathf.Lerp(1, 0, timer / .5f));
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
