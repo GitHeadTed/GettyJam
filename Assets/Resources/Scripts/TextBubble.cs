@@ -10,6 +10,7 @@ public class TextBubble : Clickable {
 	private TextMesh tm;
 	private int current;
     private GameObject childTooltip;
+    private bool childTooltipFadeOut;
 
 
 	// Use this for initialization
@@ -36,6 +37,11 @@ public class TextBubble : Clickable {
                 objectEnable[current].SetActive(true);
 			
 		}
+
+        if (!childTooltipFadeOut)
+        {
+            StartCoroutine(fadeOutChild());
+        }
 	}
 
 
@@ -44,6 +50,20 @@ public class TextBubble : Clickable {
 		tm.text = dialogue[current];
 
 	}
+
+    IEnumerator fadeOutChild()
+    {
+        childTooltipFadeOut = true;
+        TextMesh text = childTooltip.GetComponent<TextMesh>();
+        float timer = 0;
+        Color startCol = text.color;
+        while (timer < .5f)
+        {
+            timer += Time.deltaTime;
+            text.color = new Color (startCol.r, startCol.g, startCol.b, Mathf.Lerp(startCol.a,0,timer/.5f));
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
 
 }
