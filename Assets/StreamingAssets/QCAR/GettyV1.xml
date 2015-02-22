@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="caprisun" size="1.000000 1.000000" />
-    <ImageTarget name="grapegirl" size="1.000000 1.155080" />
-    <ImageTarget name="waterwheel" size="1.000000 0.794702" />
-    <ImageTarget name="testimage" size="5.000000 6.734694" />
-    <ImageTarget name="musicians" size="5.000000 7.190413" />
+    <ImageTarget name="europa" size="2.000000 1.572973" />
+    <ImageTarget name="andrew" size="2.000000 2.484978" />
+    <ImageTarget name="ship3" size="2.000000 1.517693" />
+    <ImageTarget name="ship2" size="2.000000 1.517766" />
+    <ImageTarget name="anthony" size="2.000000 3.090425" />
+    <ImageTarget name="ship" size="2.000000 1.517693" />
+    <ImageTarget name="cow2" size="2.000000 1.888342" />
+    <ImageTarget name="cow" size="2.000000 1.888342" />
+    <ImageTarget name="feast3" size="2.000000 1.601683" />
+    <ImageTarget name="feast2" size="2.000000 1.601683" />
+    <ImageTarget name="feast" size="2.000000 1.562830" />
+    <ImageTarget name="soldier3" size="2.000000 1.376130" />
+    <ImageTarget name="bread2" size="2.000000 2.622449" />
+    <ImageTarget name="bread" size="2.000000 2.564445" />
+    <ImageTarget name="brawl2" size="2.000000 1.156838" />
+    <ImageTarget name="brawl" size="2.000000 1.186222" />
+    <ImageTarget name="interiorTest" size="2.000000 1.379641" />
+    <ImageTarget name="interior" size="2.000000 1.379641" />
+    <ImageTarget name="angel" size="2.000000 1.520325" />
+    <ImageTarget name="lot" size="2.000000 1.550974" />
+    <ImageTarget name="cards" size="2.000000 1.578125" />
+    <ImageTarget name="mars" size="2.000000 1.560588" />
+    <ImageTarget name="elijah" size="2.000000 1.796407" />
+    <ImageTarget name="drawing_lesson" size="2.000000 2.442589" />
+    <ImageTarget name="landscape_2" size="2.000000 1.670014" />
+    <ImageTarget name="Noahs_Ark" size="2.000000 1.250269" />
+    <ImageTarget name="frenchTest" size="2.000000 1.644886" />
     <ImageTarget name="woodland" size="5.000000 3.690000" />
+    <ImageTarget name="musicians" size="5.000000 7.190413" />
   </Tracking>
 </QCARConfig>

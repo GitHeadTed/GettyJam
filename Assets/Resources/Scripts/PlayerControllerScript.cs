@@ -48,7 +48,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 Touch touch = Input.GetTouch(0);
                 Transform pickedObject = currentlyDraggedObject;
                 Vector2 screenDelta = touch.deltaPosition;
-                screenDelta *= 2;
+                screenDelta *= 3;
 
                 float halfScreenWidth = 0.5f * Screen.width;
                 float halfScreenHeight = 0.5f * Screen.height;
