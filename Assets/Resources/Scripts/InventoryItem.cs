@@ -5,6 +5,7 @@ public class InventoryItem : MonoBehaviour {
 
     public int inventorySlot = 0;
     public float movementSpeed = 3;
+    public string name;
     private Vector3 inventoryPos;
 
 	// Use this for initialization
@@ -17,6 +18,11 @@ public class InventoryItem : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void returnToInventory()
+    {
+        StartCoroutine(lerpToInventorySlot());
+    }
 
     IEnumerator lerpToInventorySlot()
     {
