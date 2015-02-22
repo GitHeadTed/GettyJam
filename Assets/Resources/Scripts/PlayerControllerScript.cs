@@ -32,7 +32,7 @@ public class PlayerControllerScript : MonoBehaviour {
                 {
                     hit.transform.GetComponent<Clickable>().OnClicked();
                 }
-                else if (hit.transform.GetComponent<InventoryItem>())
+                else if (hit.transform.GetComponent<InventoryItem>() )
                 {
                     currentlyDraggedObject = hit.transform;
                 }
@@ -45,7 +45,8 @@ public class PlayerControllerScript : MonoBehaviour {
 		else if (Input.GetTouch (0).phase == TouchPhase.Moved) {
             if (currentlyDraggedObject)
             {
-                currentlyDraggedObject.position = camera.ScreenToWorldPoint(Input.GetTouch(0).position);
+                Vector3 touchPos = Input.GetTouch(0).position;
+                currentlyDraggedObject.position = camera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, currentlyDraggedObject.position.z));
             }
 		}
         else if (Input.GetTouch(0).phase == TouchPhase.Ended)
