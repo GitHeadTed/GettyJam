@@ -69,8 +69,8 @@ public class ScaleUpTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
 
     IEnumerator ScaleUp(Transform trans,Vector3 scale)
     {
-        trans.collider.enabled = true;
-        trans.renderer.enabled = true;
+       // trans.collider.enabled = true;
+        //trans.renderer.enabled = true;
         float timer = 0;
         while (timer < scaleInTime)
         {
@@ -89,7 +89,7 @@ public class ScaleUpTrackableBehaviour : MonoBehaviour, ITrackableEventHandler
             trans.transform.localScale = Vector3.Lerp(scale, Vector3.zero, timer / scaleInTime);
             yield return new WaitForEndOfFrame();
         }
-        trans.collider.enabled = false;
-        trans.renderer.enabled = false;
+        //trans.collider.enabled = false;
+        //trans.renderer.enabled = false;
     }
 }
