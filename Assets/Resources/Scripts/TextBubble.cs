@@ -15,6 +15,8 @@ public class TextBubble : Clickable {
 
 	// Use this for initialization
 	void Start () {
+        if (objectEnable.Length == 0)
+            objectEnable = new GameObject[dialogue.Length];
 		for(int i = 0; i < dialogue.Length; i++) dialogue[i] = dialogue[i].Replace("NEWLINE","\n");
 		tm = GetComponent<TextMesh>();
 		current = 0;
@@ -33,9 +35,11 @@ public class TextBubble : Clickable {
 		if(current+1 < dialogue.Length && textUnlocked[current + 1]){
 			current++;
 			tm.text = dialogue[current];
-            if(objectEnable[current])
-                objectEnable[current].SetActive(true);
-			
+            if (objectEnable[current])
+            {
+                objectEnable[current].renderer.enabled = true;
+                fadeIn(objectEnable[current]);
+            }
 		}
 
         if (!childTooltipFadeOut)
@@ -50,6 +54,20 @@ public class TextBubble : Clickable {
 		tm.text = dialogue[current];
 
 	}
+
+    IEnumerator fadeIn(GameObject obj)
+    {
+
+        Material mat = obj.renderer.material;
+        float timer = 0;
+        Color startCol = mat.color;
+        while (timer < .5f)
+        {
+            timer += Time.deltaTime;
+            mat.color = new Color(startCol.r, startCol.g, startCol.b, Mathf.Lerp(0, 1, timer / .5f));
+            yield return new WaitForEndOfFrame();
+        }
+    }
 
     IEnumerator fadeOutChild()
     {

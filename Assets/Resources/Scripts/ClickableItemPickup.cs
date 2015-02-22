@@ -12,7 +12,8 @@ public class ClickableItemPickup : Clickable {
 	// Update is called once per frame
 	void Update () {
         playerScript = GameObject.FindObjectOfType<PlayerControllerScript>();
-        tooltip = transform.FindChild("TooltipPicture").gameObject;
+        tooltip = GameObject.Find("Indicator").gameObject;
+        tooltip.renderer.enabled = false;
     }
 	
 	public override void OnClicked()
@@ -28,6 +29,7 @@ public class ClickableItemPickup : Clickable {
 
     IEnumerator fadeOutChild()
     {
+        collider.enabled = false;
         Material mat = tooltip.renderer.material;
         float timer = 0;
         Color startCol = mat.color;
